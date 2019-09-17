@@ -1,6 +1,5 @@
 import directives.initDirectives
 import external.composition_api.VueCompositionApi
-import external.font_awsome.initFa
 import external.vue.Vue
 import external.vue.VueRouter
 import kotlinext.js.jsObject
@@ -10,7 +9,6 @@ import kotlin.browser.window
 
 
 fun main() {
-    initFa()
     initDirectives()
 
     Vue.use(VueCompositionApi)
@@ -26,7 +24,7 @@ fun main() {
                     app().h()
                 }()
             }
-        }).`$mount`(document.getElementById("root")!!)
+        }).`$mount`(document.getElementById("app")!!)
     }
 }
 

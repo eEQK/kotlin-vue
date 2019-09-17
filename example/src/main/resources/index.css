@@ -1,0 +1,10 @@
+body, html, #app {
+    background-color: #CAE4DB !important;
+    color: #00303f !important;
+    height: 100%;
+}
+
+.sidebar {
+    min-width: 100px;
+    max-width: 100px;
+}

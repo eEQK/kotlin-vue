@@ -1,21 +1,18 @@
-package views.home
+package components
 
 import wrapper.div
+import wrapper.routerView
 import wrapper.vComponent
 import wrapper.vRender
 
-
-fun home() = vComponent<Unit> {
-    name = "Home"
+fun container() = vComponent<Unit> {
+    name = "users"
 
     setup = { _, _ ->
-
         vRender {
             div {
-                +"HOME"
+                routerView()
             }
         }
     }
 }
-
-

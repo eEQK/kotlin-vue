@@ -1,19 +1,21 @@
-package views.users
+package views
 
 import wrapper.div
-import wrapper.routerView
+import wrapper.i
 import wrapper.vComponent
 import wrapper.vRender
 
-fun users() = vComponent<Unit> {
-    name = "users"
-
+fun home() = vComponent<Unit> {
     setup = { _, _ ->
         vRender {
             div {
-                +"USERS"
-                routerView()
+
+                +"Hello Kotlin/Vue! "
+                i { `class` = "far fa-smile" }
+
             }
         }
     }
 }
+
+
