@@ -1,16 +1,12 @@
-package components
+package views
 
 import external.composition_api.ref
-import kotlinx.css.LinearDimension
-import kotlinx.css.height
-import kotlinx.css.width
 import wrapper.div
 import wrapper.span
 import wrapper.vComponent
 import wrapper.vRender
 
 fun binding() = vComponent<Unit> {
-
     setup = { _, _ ->
         val counter = ref(0)
 
@@ -38,19 +34,6 @@ fun binding() = vComponent<Unit> {
                 }
 
             }
-        }
-    }
-
-    css {
-        ".content" {
-            width = LinearDimension("500px")
-        }
-
-        ".counter" {
-            height = LinearDimension.fitContent
-        }
-
-        ".btn" {
         }
     }
 }

@@ -8,7 +8,6 @@ import wrapper.vComponent
 import wrapper.vRender
 
 fun binding2() = vComponent<Unit> {
-
     setup = { _, _ ->
         val state = ref("")
 

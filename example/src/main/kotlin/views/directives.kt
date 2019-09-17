@@ -10,7 +10,6 @@ fun directives() = vComponent<Unit> {
     setup = { _, _ ->
 
         val divBackground = ref(Color.red)
-
         val outsideOfNodeClick = {
             divBackground.value = Color.blue
         }

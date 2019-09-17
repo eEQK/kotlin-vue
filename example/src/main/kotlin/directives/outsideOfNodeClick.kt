@@ -6,7 +6,6 @@ import wrapper.vDirective
 import kotlin.browser.document
 
 val outsideOfNodeClick = vDirective {
-
     var handleCustomClick: ((event: Event) -> Unit)? = null
 
     bind { el, binding, _, _ ->

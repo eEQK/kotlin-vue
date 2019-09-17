@@ -6,8 +6,6 @@ import wrapper.vComponent
 import wrapper.vRender
 
 fun primaryHeader() = vComponent<Unit> {
-    name = "PrimaryHeader"
-
     setup = { _, _ ->
         vRender {
             div {

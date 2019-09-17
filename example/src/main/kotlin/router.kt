@@ -1,16 +1,14 @@
-import components.binding
 import components.container
+import views.binding
 import views.binding2
 import views.directives
 import views.home
-
 import wrapper.vRouter
 
 val vRouter = vRouter {
     mode = "hash"
     vRoute {
         path = "/"
-        name = "container"
         component = container()
 
         childRoute {
