@@ -19,7 +19,6 @@ repositories {
     maven(url = "https://dl.bintray.com/kotlin/kotlin-js-wrappers")
 }
 
-
 kotlin {
     target {
         browser {
@@ -43,8 +42,11 @@ kotlin {
                     implementation("org.jetbrains:kotlin-css:1.0.0-pre.83-kotlin-1.3.50")
                     implementation("org.jetbrains:kotlin-css-js:1.0.0-pre.83-kotlin-1.3.50")
                     implementation("org.jetbrains.kotlinx:kotlinx-html:0.6.12")
+                    implementation("org.jetbrains.kotlin:kotlin-test-js:$kotlinVersion")
                 }
             }
         }
+        // TODO: find a nicer way to do this
+        nodejs {} // allows to run tests
     }
 }
