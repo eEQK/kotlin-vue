@@ -5,7 +5,6 @@ import wrapper.div
 import wrapper.routerView
 import wrapper.vRender
 
-
 class Content : VComponent<Unit>() {
     init {
         setup { _, _ ->

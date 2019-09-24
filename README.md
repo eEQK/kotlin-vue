@@ -42,6 +42,7 @@ If there are no errors during the command execution, it means that the tests ran
 Otherwise, you will be notified with a `FAILURE` message and with an URL
 to the report. If the tests succeeded and you want to see the report anyway,
 open `kotlin-vue/build/reports/tests/test/index.html`.
+
 ### Useful links
 
 [KotlinLang](https://kotlinlang.org/docs/reference/)
