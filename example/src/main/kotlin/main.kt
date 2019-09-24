@@ -8,7 +8,6 @@ import wrapper.vRender
 import kotlin.browser.document
 import kotlin.browser.window
 
-
 fun main() {
     initFa()
     initDirectives()

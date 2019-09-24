@@ -41,7 +41,7 @@ open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
 
     fun style(builder: VCssRuleSet) {
         val vCssBuilder = VCssBuilder().apply(builder)
-        style = vCssBuilder.buildDeclarations()
+        style = vCssBuilder.toString()
     }
 
     inline fun directives(builder: VDirectivesBuilder.() -> Unit) {

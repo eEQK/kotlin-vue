@@ -1,13 +1,13 @@
 package components
 
-import wrapper.*
+import wrapper.VComponent
+import wrapper.div
+import wrapper.routerView
+import wrapper.vRender
 
 
 class Content : VComponent<Unit>() {
     init {
-
-        css { +stylesPrimaryMainContent }
-
         setup { _, _ ->
             vRender {
                 div {
@@ -16,12 +16,5 @@ class Content : VComponent<Unit>() {
                 }
             }
         }
-    }
-}
-
-
-private val stylesPrimaryMainContent: VCssRuleSet = {
-
-    ".main-content"{
     }
 }
