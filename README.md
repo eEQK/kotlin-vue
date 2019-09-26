@@ -1,8 +1,39 @@
 # kotlin-vue
 
-This is a kotlin wrapper for [VueJs](https://vuejs.org/).
+Kotlin wrapper for [VueJs](https://vuejs.org/).
 
 The project uses [Vue Composition API](https://vue-composition-api-rfc.netlify.com/) Vue2 plugin
+
+#### Compiles and reloads for development
+
+```shell script
+./gradlew example:browserRun --continuous
+```
+
+Served on `http://localhost:8083`
+
+#### Testing
+
+```shell script
+./gradlew test
+```
+
+### Useful links
+
+[KotlinLang](https://kotlinlang.org/docs/reference/)
+
+[Kotlin VueJs Slack](https://kotlinlang.slack.com/messages/C8CQT4F47)
+
+[VueJs](https://vuejs.org/)
+
+[Vue Composition API](https://vue-composition-api-rfc.netlify.com/)
+
+[Vue RFCs](https://github.com/vuejs/rfcs/tree/master/active-rfcs)
+
+[Vuex](https://vuex.vuejs.org/)
+
+
+### Background
 
 The plan is to keep up with the RFC through to Vue3 release, at which point the API will need to change a bit, but should also
 stabilize shortly there after.
@@ -23,36 +54,3 @@ Contributions in the form of playing with it, bug reports, missing features, pul
 (I wrote this to learn kotlin and support two excellent products).
 
 I've also never hosted/managed an open source project like this so if my zippers down, be a bro and let me know.
-
-### Compiles and reloads for development
-
-```shell script
-./gradlew example:browserRun --continuous
-```
-
-Served on `http://localhost:8083`
-
-### Testing
-
-```shell script
-./gradlew test
-```
-
-If there are no errors during the command execution, it means that the tests ran successfully.
-Otherwise, you will be notified with a `FAILURE` message and with an URL
-to the report. If the tests succeeded and you want to see the report anyway,
-open `kotlin-vue/build/reports/tests/test/index.html`.
-
-### Useful links
-
-[KotlinLang](https://kotlinlang.org/docs/reference/)
-
-[Kotlin VueJs Slack](https://kotlinlang.slack.com/messages/C8CQT4F47)
-
-[VueJs](https://vuejs.org/)
-
-[Vue Composition API](https://vue-composition-api-rfc.netlify.com/)
-
-[Vue RFCs](https://github.com/vuejs/rfcs/tree/master/active-rfcs)
-
-[Vuex](https://vuex.vuejs.org/)
