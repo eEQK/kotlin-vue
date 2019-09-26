@@ -39,9 +39,9 @@ open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
         domPropsBuilder = builder
     }
 
-    fun style(builder: VCssRuleSet) {
-        val vCssBuilder = VCssBuilder().apply(builder)
-        style = vCssBuilder.toString()
+    fun style(builder: VCssRulesBlock) {
+        val vCssRule = VCssRule.of(builder)
+        style = vCssRule.toString()
     }
 
     inline fun directives(builder: VDirectivesBuilder.() -> Unit) {

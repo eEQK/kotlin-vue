@@ -79,9 +79,9 @@ class SideMenuItem(builder: VComponentBuilder<SideMenuItemProps>) :
 
 private val stylesSideMenuItem: VCssRuleSet = {
     ".menu-item"{
-        display = Display.flex
+        width = LinearDimension("100%")
         alignItems = Align.center
-        height = LinearDimension("3rem")
+        flex(0.0, 1.0)
         backgroundColor = Color("#F4F4F5")
     }
 

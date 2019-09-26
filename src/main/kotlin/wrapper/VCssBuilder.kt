@@ -1,38 +1,38 @@
 package wrapper
 
-import kotlinx.css.StyledElement
 import kotlinx.css.TagSelector
 import org.w3c.dom.Element
 import org.w3c.dom.css.CSSStyleSheet
-import wrapper.internal.utils.with
+import wrapper.internal.VCssDsl
 import kotlin.browser.document
 
-internal typealias VCssRuleSet = VCssBuilder.() -> Unit
+typealias VCssRuleSet = VCssBuilder.() -> Unit
 
-class VCssBuilder : StyledElement() {
+@VCssDsl
+class VCssBuilder {
 
     val rules = mutableListOf<VCssRule>()
 
-    fun add(block: VCssBuilder.() -> Unit) = block()
+    operator fun invoke(block: VCssBuilder.() -> Unit): VCssBuilder =
+        VCssBuilder().apply(block).also { println(rules) }
 
-    fun add(id: String, block: VCssBuilder.() -> Unit): VCssRule {
-        rules.add(id with this(block))
-        return rules.last()
+    fun import(id: String, block: VCssRulesBlock) {
+        rules.add(VCssRule.of(block, id))
     }
 
-    operator fun invoke(block: VCssBuilder.() -> Unit): VCssBuilder = VCssBuilder().apply(block)
+    operator fun String.invoke(block: VCssRule.() -> Unit) = import(this, block)
+    operator fun String.invoke(selector: String, block: VCssRule.() -> Unit) = import(this + selector, block)
+    operator fun TagSelector.invoke(block: VCssRule.() -> Unit) = tagName(block)
+    operator fun TagSelector.invoke(selector: String, block: VCssRule.() -> Unit) = "$tagName$selector"(block)
 
-    operator fun VCssRuleSet.unaryPlus() = add(this)
-    operator fun String.invoke(block: VCssRuleSet) = add(this, block)
-    operator fun String.invoke(selector: String, block: VCssRuleSet) = add(this + selector, block)
-    operator fun TagSelector.invoke(block: VCssRuleSet) = tagName(block)
-    operator fun TagSelector.invoke(selector: String, block: VCssRuleSet) = "$tagName$selector"(block)
+    fun import(block: VCssBuilder.() -> Unit) = block()
+    operator fun (VCssBuilder.() -> Unit).unaryPlus() = import(this)
 
     override fun toString() =
         rules.joinToString(" ") { "$it" }
 }
 
-fun buildCss(css: VCssBuilder, name: String?) {
+internal fun buildCss(css: VCssBuilder, name: String?) {
 
     if (name == null) {
         return

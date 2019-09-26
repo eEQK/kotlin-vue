@@ -39,7 +39,7 @@ class SideMenuGroup(builder: VComponentBuilder<SideMenuGroupProps>) : VComponent
 
             val maxHeight = computed(getter = {
                 if (opened.value) {
-                    "${menuItems.value?.firstChild?.childNodes?.length?.let { it * 3 }}rem"
+                    "${menuItems.value?.firstChild?.childNodes?.length?.let { it * 4 }}rem"
                 } else {
                     "0"
                 }
@@ -109,7 +109,6 @@ private val stylesSideMenuGroup: VCssRuleSet = {
 
     ".chevron"{
         color = Color.darkSalmon
-        margin = "0.5rem 0.5rem 0.5rem auto"
 
         transition("transform", 0.2.s, Timing.easeInOut)
     }

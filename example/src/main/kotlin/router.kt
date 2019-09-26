@@ -14,7 +14,7 @@ import views.slots.Slots
 import wrapper.vRouter
 
 val vRouter = vRouter {
-    mode = "history"
+    mode = "hash"
 
     vRoute {
         path = "/"

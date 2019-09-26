@@ -21,7 +21,6 @@ repositories {
     maven(url = "https://dl.bintray.com/kotlin/kotlin-js-wrappers")
 }
 
-
 kotlin {
     target {
         browser {
