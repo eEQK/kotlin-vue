@@ -11,5 +11,5 @@ operator fun Slot.invoke(args: Array<Any>? = null): VNode {
 
 typealias RenderFunction = () -> VNode
 
-typealias SetupFunction<Props> = (props: Props, ctx: SetupContext) -> RenderFunction
+typealias SetupFunction<P> = (props: P, ctx: SetupContext) -> RenderFunction
 

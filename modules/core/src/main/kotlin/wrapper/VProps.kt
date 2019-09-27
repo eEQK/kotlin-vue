@@ -29,11 +29,11 @@ class VPropDefs : PropDefs {
     override var name: String? = null
     override var type: Any? = null
 
-    fun type(clazz: JsClass<*>) {
+    fun type(clazz: JsClass<Any>) {
         type = clazz
     }
 
-    fun type(types: Array<JsClass<*>>) {
+    fun type(types: Array<JsClass<Any>>) {
         type = types
     }
 

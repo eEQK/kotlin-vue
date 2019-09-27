@@ -157,7 +157,8 @@ external interface FunctionalComponentOptions<Props> {
 
 interface PropDefs {
     var name: String?
-    var type: Any? /* JsClass<*> | Array<JsClass<*>>*/
+    /**  JsClass<Any> | Array<JsClass<Any>> */
+    var type: Any?
     var required: Boolean?
     var default: Any?
     var validator: ((value: Any) -> Boolean)?

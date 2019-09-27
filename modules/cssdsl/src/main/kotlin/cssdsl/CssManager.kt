@@ -22,6 +22,9 @@ class CssManager {
                 false -> handleGlobalCss(css)
             }
 
+        fun append(css: CssBuilder.() -> Unit, selector: String?, scoped: Boolean = false) =
+            append(CssBuilder.of(css), selector, scoped)
+
         fun handleGlobalCss(css: CssBuilder) {
             appendCssToStyle(globalStyle.value, css)
         }

@@ -25,7 +25,7 @@ class Slots : VComponent<Unit>() {
     }
 }
 
-class ComponentWithSlot(builder: VComponentBuilder<Unit>) : VComponent<Unit>(builder) {
+class ComponentWithSlot(builder: VComponentBuilder<Unit>) : VComponent<Unit>(builder = builder) {
     init {
         setup { _, ctx ->
             vRender {

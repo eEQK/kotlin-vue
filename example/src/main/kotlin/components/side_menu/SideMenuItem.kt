@@ -47,7 +47,7 @@ class SideMenuItemProps {
 }
 
 class SideMenuItem(builder: VComponentBuilder<SideMenuItemProps>) :
-    VComponent<SideMenuItemProps>(builder, SideMenuItemProps()) {
+    VComponent<SideMenuItemProps>(builder = builder, renderProps = SideMenuItemProps()) {
 
     init {
         css { +stylesSideMenuItem }

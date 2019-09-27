@@ -1,6 +1,5 @@
 package views
 
-import components.functionComponent
 import wrapper.VComponent
 import wrapper.div
 import wrapper.vRender
@@ -10,16 +9,11 @@ class Home : VComponent<Unit>() {
         setup { _, _ ->
 
             vRender {
+                +"AAAAA"
                 div {
-                    functionComponent().h {
-                        props {
-                            message = "Welcome to Kotlin/Vue"
-                        }
-                    }
+                    +"Welcome to Kotlin/Vue"
                 }
             }
         }
     }
 }
-
-

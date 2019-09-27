@@ -27,4 +27,8 @@ class CssBuilder {
 
     override fun toString() =
         rules.joinToString(" ") { "$it" }
+
+    companion object {
+        fun of(block: CssBuilder.() -> Unit) = CssBuilder().apply(block)
+    }
 }

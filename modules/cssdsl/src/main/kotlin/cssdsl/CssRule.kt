@@ -15,7 +15,7 @@ class CssRule : StyledElement() {
     override fun toString() = buildDeclarations(block)
         .let {
             if (selector == null) it
-            else "$selector { $it }".prependIndent()
+            else "$selector {\n$it\n}".prependIndent()
         }
 
     operator fun invoke(block: CssRulesBlock) =
@@ -24,7 +24,7 @@ class CssRule : StyledElement() {
     fun buildDeclarations(block: CssRulesBlock) =
         invoke(block).declarations
             .map { "${it.key.hyphenize()}: ${it.value};" }
-            .joinToString("")
+            .joinToString("\n")
 
     companion object {
         fun of(

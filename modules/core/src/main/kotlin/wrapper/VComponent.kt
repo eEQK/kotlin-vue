@@ -1,6 +1,5 @@
 package wrapper
 
-import cssdsl.CssBuilder
 import cssdsl.CssManager
 import cssdsl.CssRuleSet
 import external.composition_api.SetupContext
@@ -9,14 +8,19 @@ import kotlinext.js.jsObject
 
 typealias VComponentBuilder<P> = VComponent<P>.() -> Unit
 
-abstract class VComponent<P : Any>(
-    builder: VComponentBuilder<P>? = null,
-    renderProps: P? = null
+fun <P : Any> vComponent(builder: VComponentBuilder<P> = {}): VComponent<P> =
+    VComponent(null, builder)
+
+fun vComponent(builder: VComponentBuilder<Unit> = {}): VComponent<Unit> =
+    VComponent(null, builder)
+
+open class VComponent<P : Any>(
+    renderProps: P? = null,
+    builder: VComponentBuilder<P> = {}
 ) : VNodeDataBuilder<P, Unit, Unit>() {
 
     var propDefs: VPropDefs? = null
-
-    var setupFunction: SetupFunction<*>? = null
+    var setupFunction: SetupFunction<P>? = null
 
     init {
         builder?.let { apply(it) }
@@ -26,10 +30,9 @@ abstract class VComponent<P : Any>(
         }
     }
 
-    fun css(builder: CssRuleSet) {
-        val css = CssBuilder().apply(builder)
-        CssManager.append(css, this::class.simpleName)
-    }
+    // TODO: what if there will be two components inn different packages that are called the same?
+    fun css(builder: CssRuleSet) =
+        CssManager.append(builder, this::class.simpleName)
 
     fun propData(builder: PropData.() -> Unit) {
         propDefs = buildPropDefs(builder)
@@ -39,35 +42,21 @@ abstract class VComponent<P : Any>(
         setupFunction = value
     }
 
-    fun component(): VComponentOptions {
-        return jsObject {
-            name = VComponent::class.simpleName
-            props = propDefs
-            setup = setupFunction
-        }
+    fun component(): VComponentOptions = jsObject {
+        name = VComponent::class.simpleName
+        props = propDefs
+        setup = setupFunction
     }
 
+    // TODO: refactor slot
     fun slot(VRender: VRender.() -> Unit) {
-        child(VRenderer<Unit, Unit, Unit>().apply(VRender).getChildren()[0])
+        child(VRenderer<Unit, Unit, Unit>().apply(VRender).children.first())
     }
 
     fun <T> getRef(name: String, ctx: SetupContext): T? =
         ctx.refs?.get(name).unsafeCast<T?>()
 }
 
-interface VComponentOptions {
-    var name: String?
-    var props: VPropDefs?
-    var setup: SetupFunction<*>?
-}
-
 class VComponentFuncBuilder<P : Any>(renderProps: P? = null) : VComponent<P>(renderProps = renderProps) {
     var name: String? = null
-}
-
-fun <P : Any> vComponent(
-    renderProps: P? = null,
-    builder: VComponentFuncBuilder<P>.() -> Unit
-): VComponentFuncBuilder<P> {
-    return VComponentFuncBuilder(renderProps).apply(builder)
 }

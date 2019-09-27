@@ -10,11 +10,10 @@ import kotlinx.css.alignItems
 import kotlinx.css.display
 import kotlinx.css.flexDirection
 import wrapper.VComponent
-import wrapper.VComponentBuilder
 import wrapper.div
 import wrapper.vRender
 
-class SideMenu(builder: VComponentBuilder<Unit>? = null) : VComponent<Unit>(builder) {
+class SideMenu() : VComponent<Unit>() {
     init {
         css { +stylesSideMenu }
 

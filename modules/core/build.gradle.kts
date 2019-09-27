@@ -16,7 +16,7 @@ kotlin {
         sourceSets {
             main {
                 dependencies {
-                    implementation(project(":modules:css"))
+                    implementation(project(":modules:cssdsl"))
 
                     implementation(npm("core-js", "latest"))
                     implementation(npm("@jetbrains/kotlin-css", "latest"))

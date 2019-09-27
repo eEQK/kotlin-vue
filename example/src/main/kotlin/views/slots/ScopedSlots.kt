@@ -56,7 +56,7 @@ class ScopedSlots : VComponent<Unit>() {
     }
 }
 
-class ComponentWithScopedSlot(builder: VComponentBuilder<Unit>) : VComponent<Unit>(builder) {
+class ComponentWithScopedSlot(builder: VComponentBuilder<Unit>) : VComponent<Unit>(builder = builder) {
     init {
         setup { _, ctx ->
             vRender {

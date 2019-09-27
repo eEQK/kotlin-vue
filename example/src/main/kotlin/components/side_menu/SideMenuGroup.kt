@@ -30,7 +30,9 @@ interface SideMenuGroupProps {
     var title: String
 }
 
-class SideMenuGroup(builder: VComponentBuilder<SideMenuGroupProps>) : VComponent<SideMenuGroupProps>(builder) {
+class SideMenuGroup(builder: VComponentBuilder<SideMenuGroupProps>) :
+    VComponent<SideMenuGroupProps>(builder = builder) {
+
     init {
         css { +stylesSideMenuGroup }
 
