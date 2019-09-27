@@ -2,7 +2,6 @@
 
 package external.vue
 
-
 import kotlin.js.RegExp
 
 external interface Dictionary<T>
@@ -42,7 +41,6 @@ external interface Resolved {
     var normalizedTo: Location
     var resolved: Route
 }
-
 
 external interface Position {
     var x: Number

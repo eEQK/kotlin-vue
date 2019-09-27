@@ -7,7 +7,6 @@ import kotlin.js.Promise
 
 external interface CreateElement
 
-
 inline operator fun <P, A, D> CreateElement.invoke(tag: Any?, data: VNodeData<P, A, D>?, children: Any?): VNode {
     return asDynamic()(tag, data, children).unsafeCast<VNode>()
 }
@@ -24,28 +23,22 @@ inline operator fun CreateElement.invoke(): VNode {
     return asDynamic()().unsafeCast<VNode>()
 }
 
-
 external interface Refs
-
 
 inline operator fun Refs.get(key: String): dynamic /* types.IVue.external_declarations.IVue.IVue | Element | Array<types.IVue.external_declarations.IVue.IVue> | Array<Element> */ =
     asDynamic()[key]
-
 
 inline operator fun Refs.set(key: String, value: IVue) {
     asDynamic()[key] = value
 }
 
-
 inline operator fun Refs.set(key: String, value: Element) {
     asDynamic()[key] = value
 }
 
-
 inline operator fun Refs.set(key: String, value: Array<IVue>) {
     asDynamic()[key] = value
 }
-
 
 inline operator fun Refs.set(key: String, value: Array<Element>) {
     asDynamic()[key] = value
@@ -55,11 +48,9 @@ external interface Slots
 
 inline operator fun Slots.get(key: String): Array<VNode>? = asDynamic()[key].unsafeCast<Array<VNode>?>()
 
-
 inline operator fun Slots.set(key: String, value: Array<VNode>?) {
     asDynamic()[key] = value
 }
-
 
 external interface IVue {
     var `$el`: Element

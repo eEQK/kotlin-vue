@@ -1,6 +1,5 @@
 //package wrapper
 
-
 //class VBuilder() {
 //    var tag: Any? = null
 //    var params: types.vue.types.vue.external_declarations.vue.VNodeData<Any> = jsObject { }
@@ -62,7 +61,6 @@
 //    return component
 //}
 
-
 //inline fun VBuilder.div(h: types.vue.external_declarations.vue.CreateElement, builder: VBuilder.() -> Unit): types.vue.types.vue.external_declarations.vue.VNode {
 //    val element = VBuilder().apply(builder)
 //    element.tag = "div"
@@ -70,7 +68,6 @@
 //    children { add(child) }
 //    return child
 //}
-
 
 //interface types.vue.external_declarations.vue.PropOptions {
 //    var type: JsClass<*>?

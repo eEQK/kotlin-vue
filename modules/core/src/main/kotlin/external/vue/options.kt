@@ -2,7 +2,6 @@
 
 package external.vue
 
-
 import org.w3c.dom.HTMLElement
 import kotlin.js.Promise
 
@@ -27,10 +26,8 @@ typealias DefaultProps = Record<String, Any>
 
 external interface DefaultMethods<V>
 
-
 inline operator fun <V> DefaultMethods<V>.get(key: String): ((`this`: V, args: Any) -> Any)? =
     asDynamic()[key].unsafeCast<((`this`: V, args: Any) -> Any)?>()
-
 
 inline operator fun <V> DefaultMethods<V>.set(key: String, noinline value: (`this`: V, args: Array<Any>) -> Any) {
     asDynamic()[key] = value
@@ -38,9 +35,7 @@ inline operator fun <V> DefaultMethods<V>.set(key: String, noinline value: (`thi
 
 external interface DefaultComputed
 
-
 inline operator fun DefaultComputed.get(key: String): Any? = asDynamic()[key].unsafeCast<Any?>()
-
 
 inline operator fun DefaultComputed.set(key: String, value: Any) {
     asDynamic()[key] = value
@@ -51,11 +46,9 @@ external interface Directives
 inline operator fun Directives.get(key: String): dynamic /* DirectiveFunction | DirectiveOptions */ =
     asDynamic()[key]
 
-
 inline operator fun Directives.set(key: String, noinline value: DirectiveFunction) {
     asDynamic()[key] = value
 }
-
 
 inline operator fun Directives.set(key: String, value: DirectiveOptions) {
     asDynamic()[key] = value
@@ -63,30 +56,24 @@ inline operator fun Directives.set(key: String, value: DirectiveOptions) {
 
 external interface Components
 
-
 inline operator fun Components.get(key: String): dynamic /* Any | FunctionalComponentOptions<Any> | ComponentOptions<Any, Any, Any, Any, Any> | AsyncComponentPromise<Any, Any, Any, Any> | AsyncComponentFactory<Any, Any, Any, Any> */ =
     asDynamic()[key]
-
 
 inline operator fun Components.set(key: String, value: Any) {
     asDynamic()[key] = value
 }
 
-
 inline operator fun Components.set(key: String, value: FunctionalComponentOptions<Any>) {
     asDynamic()[key] = value
 }
-
 
 inline operator fun Components.set(key: String, value: ComponentOptions<Any>) {
     asDynamic()[key] = value
 }
 
-
 inline operator fun Components.set(key: String, noinline value: AsyncComponentPromise) {
     asDynamic()[key] = value
 }
-
 
 inline operator fun Components.set(key: String, noinline value: AsyncComponentFactory<Any>) {
     asDynamic()[key] = value
@@ -94,9 +81,7 @@ inline operator fun Components.set(key: String, noinline value: AsyncComponentFa
 
 external interface Transitions
 
-
 inline operator fun Transitions.get(key: String): Any? = asDynamic()[key].unsafeCast<Any?>()
-
 
 inline operator fun Transitions.set(key: String, value: Any?) {
     asDynamic()[key] = value
@@ -104,9 +89,7 @@ inline operator fun Transitions.set(key: String, value: Any?) {
 
 external interface Filters
 
-
 inline operator fun Filters.get(key: String): Function<*>? = asDynamic()[key].unsafeCast<Function<*>?>()
-
 
 inline operator fun Filters.set(key: String, value: Function<*>) {
     asDynamic()[key] = value
@@ -182,19 +165,15 @@ interface PropDefs {
 
 external interface Listeners
 
-
 inline operator fun Listeners.get(key: String): dynamic /* Function<*> | Array<Function<*>> */ = asDynamic()[key]
-
 
 inline operator fun Listeners.set(key: String, value: Function<*>) {
     asDynamic()[key] = value
 }
 
-
 inline operator fun Listeners.set(key: String, value: Array<Function<*>>) {
     asDynamic()[key] = value
 }
-
 
 external interface RenderContext<P> {
     var props: P

@@ -8,7 +8,13 @@ import kotlinx.css.label
 import kotlinx.css.marginTop
 import kotlinx.css.maxWidth
 import org.w3c.dom.HTMLInputElement
-import wrapper.*
+import wrapper.VComponent
+import wrapper.div
+import wrapper.form
+import wrapper.input
+import wrapper.label
+import wrapper.pre
+import wrapper.vRender
 
 data class User(val id: Int) {
     var firstName: String = ""

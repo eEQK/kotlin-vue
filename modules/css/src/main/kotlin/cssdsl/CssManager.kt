@@ -13,7 +13,9 @@ private val globalStyle: Lazy<Element> = lazy {
 }
 
 class CssManager {
+
     companion object {
+
         fun append(css: CssBuilder, selector: String?, scoped: Boolean = false) =
             when (scoped) {
                 true -> handleScopedCss(css, selector)

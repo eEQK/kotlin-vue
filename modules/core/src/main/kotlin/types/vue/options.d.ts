@@ -82,13 +82,30 @@ export interface ComponentOptions<V extends Vue,
 
     el?: Element | string;
     template?: string;
+    staticRenderFns?: ((createElement: CreateElement) => VNode)[];
+    directives?: { [key: string]: DirectiveFunction | DirectiveOptions };
+    components?: { [key: string]: Component<any, any, any, any> | AsyncComponent<any, any, any, any> };
+    transitions?: { [key: string]: object };
+    filters?: { [key: string]: Function };
+    provide?: object | (() => object);
+    inject?: InjectOptions;
+    model?: {
+        prop?: string;
+        event?: string;
+    };
+    parent?: Vue;
+    mixins?: (ComponentOptions<Vue> | typeof Vue)[];
+    name?: string;
+    // TODO: support properly inferred 'extends'
+    extends?: ComponentOptions<Vue> | typeof Vue;
+    delimiters?: [string, string];
+    comments?: boolean;
+    inheritAttrs?: boolean;
 
     // hack is for functional component type inference, should not be used in user code
     render?(createElement: CreateElement, hack: RenderContext<Props>): VNode;
 
     renderError?(createElement: CreateElement, err: Error): VNode;
-
-    staticRenderFns?: ((createElement: CreateElement) => VNode)[];
 
     beforeCreate?(this: V): void;
 
@@ -113,28 +130,6 @@ export interface ComponentOptions<V extends Vue,
     errorCaptured?(err: Error, vm: Vue, info: string): boolean | void;
 
     serverPrefetch?(this: V): Promise<void>;
-
-    directives?: { [key: string]: DirectiveFunction | DirectiveOptions };
-    components?: { [key: string]: Component<any, any, any, any> | AsyncComponent<any, any, any, any> };
-    transitions?: { [key: string]: object };
-    filters?: { [key: string]: Function };
-
-    provide?: object | (() => object);
-    inject?: InjectOptions;
-
-    model?: {
-        prop?: string;
-        event?: string;
-    };
-
-    parent?: Vue;
-    mixins?: (ComponentOptions<Vue> | typeof Vue)[];
-    name?: string;
-    // TODO: support properly inferred 'extends'
-    extends?: ComponentOptions<Vue> | typeof Vue;
-    delimiters?: [string, string];
-    comments?: boolean;
-    inheritAttrs?: boolean;
 }
 
 export interface FunctionalComponentOptions<Props = DefaultProps, PropDefs = PropsDefinition<Props>> {
@@ -153,14 +148,13 @@ export interface FunctionalComponentOptions<Props = DefaultProps, PropDefs = Pro
 export interface RenderContext<Props = DefaultProps> {
     props: Props;
     children: VNode[];
-
-    slots(): any;
-
     data: VNodeData;
     parent: Vue;
     listeners: { [key: string]: Function | Function[] };
     scopedSlots: { [key: string]: NormalizedScopedSlot };
     injections: any
+
+    slots(): any;
 }
 
 export type Prop<T> = { (): T } | { new(...args: any[]): T & object } | { new(...args: string[]): Function }
@@ -184,11 +178,11 @@ export type ArrayPropsDefinition<T> = (keyof T)[];
 export type PropsDefinition<T> = ArrayPropsDefinition<T> | RecordPropsDefinition<T>;
 
 export interface ComputedOptions<T> {
+    cache?: boolean;
+
     get?(): T;
 
     set?(value: T): void;
-
-    cache?: boolean;
 }
 
 export type WatchHandler<T> = (val: T, oldVal: T) => void;

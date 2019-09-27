@@ -4,12 +4,16 @@ import cssdsl.CssBuilder
 import cssdsl.CssManager
 import cssdsl.CssRuleSet
 import external.composition_api.Symbol
-import external.vue.*
+import external.vue.CreateElement
+import external.vue.FunctionalComponentOptions
+import external.vue.InjectOption
+import external.vue.Model
+import external.vue.RenderContext
+import external.vue.VNode
 import kotlinext.js.jsObject
 
 typealias VFunctionalComponentBuilder<P> = VFunctionalComponent<P>.() -> Unit
 typealias VFunctionalComponentRender<P> = (createElement: CreateElement, context: RenderContext<P>) -> Array<VNode>
-
 
 abstract class VFunctionalComponent<P : Any>(
     builder: VFunctionalComponentBuilder<P>? = null,
@@ -81,6 +85,7 @@ abstract class VFunctionalComponent<P : Any>(
 
 class VFunctionalComponentFuncBuilder<P : Any>(renderProps: P? = null) :
     VFunctionalComponent<P>(renderProps = renderProps) {
+
     var name: String? = null
 }
 

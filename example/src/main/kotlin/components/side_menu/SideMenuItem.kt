@@ -4,9 +4,25 @@ import cssdsl.CssRuleSet
 import cssdsl.hover
 import external.font_awsome.FaIcon
 import kotlinext.js.Object
-import kotlinx.css.*
+import kotlinx.css.Align
+import kotlinx.css.Color
+import kotlinx.css.Cursor
+import kotlinx.css.LinearDimension
+import kotlinx.css.a
+import kotlinx.css.alignItems
+import kotlinx.css.backgroundColor
+import kotlinx.css.color
+import kotlinx.css.cursor
+import kotlinx.css.flex
+import kotlinx.css.margin
 import kotlinx.css.properties.TextDecoration
-import wrapper.*
+import kotlinx.css.textDecoration
+import kotlinx.css.width
+import wrapper.VComponent
+import wrapper.VComponentBuilder
+import wrapper.div
+import wrapper.routerLink
+import wrapper.vRender
 import kotlin.js.Json
 
 class SideMenuItemProps {
@@ -32,6 +48,7 @@ class SideMenuItemProps {
 
 class SideMenuItem(builder: VComponentBuilder<SideMenuItemProps>) :
     VComponent<SideMenuItemProps>(builder, SideMenuItemProps()) {
+
     init {
         css { +stylesSideMenuItem }
 

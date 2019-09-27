@@ -4,9 +4,9 @@ package external.vue
 
 import kotlin.js.Promise
 
-
 @JsName("default")
 open external class VueRouter(options: RouterOptions? = definedExternally) {
+
     open var app: Vue
     open var mode: String /* 'hash' | 'history' | 'abstract' */
     open var currentRoute: Route

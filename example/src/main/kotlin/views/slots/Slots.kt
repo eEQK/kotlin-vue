@@ -25,7 +25,6 @@ class Slots : VComponent<Unit>() {
     }
 }
 
-
 class ComponentWithSlot(builder: VComponentBuilder<Unit>) : VComponent<Unit>(builder) {
     init {
         setup { _, ctx ->

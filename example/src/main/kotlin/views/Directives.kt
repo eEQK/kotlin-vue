@@ -2,12 +2,17 @@ package views
 
 import external.composition_api.Ref
 import external.composition_api.ref
-import kotlinx.css.*
+import kotlinx.css.Color
+import kotlinx.css.LinearDimension
+import kotlinx.css.backgroundColor
+import kotlinx.css.borderColor
+import kotlinx.css.height
+import kotlinx.css.marginTop
+import kotlinx.css.width
 import wrapper.VComponent
 import wrapper.VRender
 import wrapper.div
 import wrapper.vRender
-
 
 class Directives : VComponent<Unit>() {
     init {
@@ -54,7 +59,6 @@ class Directives : VComponent<Unit>() {
         }
     }
 }
-
 
 fun VRender.purpleDiv(divBackground: Ref<Color>, divBorderColor: Ref<Color>) =
     div {

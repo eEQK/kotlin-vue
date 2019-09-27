@@ -6,8 +6,168 @@ import external.composition_api.createElement
 import external.vue.VNode
 import external.vue.invoke
 import kotlinext.js.jsObject
-import kotlinx.html.*
-import org.w3c.dom.*
+import kotlinx.html.A
+import kotlinx.html.ABBR
+import kotlinx.html.ADDRESS
+import kotlinx.html.AREA
+import kotlinx.html.ARTICLE
+import kotlinx.html.ASIDE
+import kotlinx.html.AUDIO
+import kotlinx.html.B
+import kotlinx.html.BASE
+import kotlinx.html.BDI
+import kotlinx.html.BDO
+import kotlinx.html.BLOCKQUOTE
+import kotlinx.html.BODY
+import kotlinx.html.BR
+import kotlinx.html.BUTTON
+import kotlinx.html.CANVAS
+import kotlinx.html.CAPTION
+import kotlinx.html.CITE
+import kotlinx.html.CODE
+import kotlinx.html.COL
+import kotlinx.html.COLGROUP
+import kotlinx.html.DATALIST
+import kotlinx.html.DD
+import kotlinx.html.DEL
+import kotlinx.html.DETAILS
+import kotlinx.html.DFN
+import kotlinx.html.DIALOG
+import kotlinx.html.DIV
+import kotlinx.html.DL
+import kotlinx.html.DT
+import kotlinx.html.EM
+import kotlinx.html.EMBED
+import kotlinx.html.Entities
+import kotlinx.html.FIELDSET
+import kotlinx.html.FIGCAPTION
+import kotlinx.html.FIGURE
+import kotlinx.html.FOOTER
+import kotlinx.html.FORM
+import kotlinx.html.H1
+import kotlinx.html.H2
+import kotlinx.html.H3
+import kotlinx.html.H4
+import kotlinx.html.H5
+import kotlinx.html.H6
+import kotlinx.html.HEAD
+import kotlinx.html.HEADER
+import kotlinx.html.HGROUP
+import kotlinx.html.HR
+import kotlinx.html.HTML
+import kotlinx.html.HTMLTag
+import kotlinx.html.I
+import kotlinx.html.IFRAME
+import kotlinx.html.IMG
+import kotlinx.html.INPUT
+import kotlinx.html.INS
+import kotlinx.html.KBD
+import kotlinx.html.LABEL
+import kotlinx.html.LEGEND
+import kotlinx.html.LI
+import kotlinx.html.LINK
+import kotlinx.html.MAP
+import kotlinx.html.MARK
+import kotlinx.html.META
+import kotlinx.html.METER
+import kotlinx.html.NAV
+import kotlinx.html.NOSCRIPT
+import kotlinx.html.OBJECT
+import kotlinx.html.OL
+import kotlinx.html.OPTGROUP
+import kotlinx.html.OPTION
+import kotlinx.html.OUTPUT
+import kotlinx.html.P
+import kotlinx.html.PARAM
+import kotlinx.html.PRE
+import kotlinx.html.PROGRESS
+import kotlinx.html.Q
+import kotlinx.html.RP
+import kotlinx.html.RT
+import kotlinx.html.RUBY
+import kotlinx.html.SAMP
+import kotlinx.html.SCRIPT
+import kotlinx.html.SECTION
+import kotlinx.html.SELECT
+import kotlinx.html.SMALL
+import kotlinx.html.SOURCE
+import kotlinx.html.SPAN
+import kotlinx.html.STRONG
+import kotlinx.html.STYLE
+import kotlinx.html.SUB
+import kotlinx.html.SUP
+import kotlinx.html.TABLE
+import kotlinx.html.TBODY
+import kotlinx.html.TD
+import kotlinx.html.TEXTAREA
+import kotlinx.html.TFOOT
+import kotlinx.html.TH
+import kotlinx.html.THEAD
+import kotlinx.html.TIME
+import kotlinx.html.TITLE
+import kotlinx.html.TR
+import kotlinx.html.Tag
+import kotlinx.html.TagConsumer
+import kotlinx.html.UL
+import kotlinx.html.Unsafe
+import kotlinx.html.VAR
+import kotlinx.html.VIDEO
+import org.w3c.dom.HTMLAnchorElement
+import org.w3c.dom.HTMLAreaElement
+import org.w3c.dom.HTMLBRElement
+import org.w3c.dom.HTMLBaseElement
+import org.w3c.dom.HTMLBodyElement
+import org.w3c.dom.HTMLButtonElement
+import org.w3c.dom.HTMLCanvasElement
+import org.w3c.dom.HTMLDListElement
+import org.w3c.dom.HTMLDataListElement
+import org.w3c.dom.HTMLDetailsElement
+import org.w3c.dom.HTMLDialogElement
+import org.w3c.dom.HTMLDivElement
+import org.w3c.dom.HTMLElement
+import org.w3c.dom.HTMLEmbedElement
+import org.w3c.dom.HTMLFieldSetElement
+import org.w3c.dom.HTMLFormElement
+import org.w3c.dom.HTMLHRElement
+import org.w3c.dom.HTMLHeadElement
+import org.w3c.dom.HTMLHeadingElement
+import org.w3c.dom.HTMLHtmlElement
+import org.w3c.dom.HTMLIFrameElement
+import org.w3c.dom.HTMLImageElement
+import org.w3c.dom.HTMLInputElement
+import org.w3c.dom.HTMLLIElement
+import org.w3c.dom.HTMLLabelElement
+import org.w3c.dom.HTMLLegendElement
+import org.w3c.dom.HTMLLinkElement
+import org.w3c.dom.HTMLMapElement
+import org.w3c.dom.HTMLMetaElement
+import org.w3c.dom.HTMLMeterElement
+import org.w3c.dom.HTMLModElement
+import org.w3c.dom.HTMLOListElement
+import org.w3c.dom.HTMLObjectElement
+import org.w3c.dom.HTMLOptGroupElement
+import org.w3c.dom.HTMLOptionElement
+import org.w3c.dom.HTMLOutputElement
+import org.w3c.dom.HTMLParagraphElement
+import org.w3c.dom.HTMLParamElement
+import org.w3c.dom.HTMLPreElement
+import org.w3c.dom.HTMLProgressElement
+import org.w3c.dom.HTMLQuoteElement
+import org.w3c.dom.HTMLScriptElement
+import org.w3c.dom.HTMLSelectElement
+import org.w3c.dom.HTMLSourceElement
+import org.w3c.dom.HTMLSpanElement
+import org.w3c.dom.HTMLTableCaptionElement
+import org.w3c.dom.HTMLTableCellElement
+import org.w3c.dom.HTMLTableColElement
+import org.w3c.dom.HTMLTableElement
+import org.w3c.dom.HTMLTableRowElement
+import org.w3c.dom.HTMLTableSectionElement
+import org.w3c.dom.HTMLTextAreaElement
+import org.w3c.dom.HTMLTimeElement
+import org.w3c.dom.HTMLTitleElement
+import org.w3c.dom.HTMLUListElement
+import org.w3c.dom.HTMLVideoElement
 import org.w3c.dom.events.Event
 
 fun <A : HTMLTag, D : HTMLElement> VBuilder.tag(
@@ -31,7 +191,6 @@ fun <A : HTMLTag, D : HTMLElement> VBuilder.tag(
     child(vNode)
     return vNode
 }
-
 
 fun VRender.a(render: VRenderer<Unit, A, HTMLAnchorElement>.() -> Unit): VNode =
     tag("a", A(mutableMapOf(), consumer), render)
@@ -335,7 +494,6 @@ fun VRender.`var`(render: VRenderer<Unit, VAR, HTMLElement>.() -> Unit): VNode =
 
 fun VRender.video(render: VRenderer<Unit, VIDEO, HTMLVideoElement>.() -> Unit): VNode =
     tag("video", VIDEO(mutableMapOf(), consumer), render)
-
 
 val consumer = object : TagConsumer<Unit> {
     override fun onTagAttributeChange(tag: Tag, attribute: String, value: String?) {

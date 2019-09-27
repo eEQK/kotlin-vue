@@ -2,11 +2,11 @@ package wrapper
 
 import external.vue.VNode
 
-
 /**
  * https://vuejs.org/v2/api/#keep-alive
  */
 class VKeepAlive {
+
     var include: Any? = null
 
     fun include(string: String) {

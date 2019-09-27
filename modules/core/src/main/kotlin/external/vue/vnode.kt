@@ -2,15 +2,12 @@
 
 package external.vue
 
-
 import org.w3c.dom.Node
 import wrapper.OnEvents
 import kotlin.js.Json
 
-
 external interface ScopedSlotReturnArray
 external interface VNodeChildrenArrayContents
-
 
 external interface VNode {
     var tag: String? get() = definedExternally; set(value) = definedExternally
@@ -37,7 +34,6 @@ external interface VNodeComponentOptions {
     var children: Array<VNode>? get() = definedExternally; set(value) = definedExternally
     var tag: String? get() = definedExternally; set(value) = definedExternally
 }
-
 
 external interface VNodeData<P, A, D> {
 
@@ -130,7 +126,6 @@ external interface InlineTemplate {
     var staticRenderFns: Array<Function<*>>
 }
 
-
 external interface VNodeDirective {
     var name: String? get() = definedExternally; set(value) = definedExternally
     var value: Any? get() = definedExternally; set(value) = definedExternally
@@ -153,7 +148,6 @@ inline operator fun Modifiers.set(key: String, value: Boolean) {
 
 typealias ScopedSlot <P> = (props: P) -> VNode
 typealias NormalizedScopedSlot = (props: Any) -> Array<VNode>?
-
 
 class VScopedSlots : ScopedSlots
 external interface ScopedSlots

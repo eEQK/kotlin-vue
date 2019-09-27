@@ -77,7 +77,6 @@ open class VRenderer<P, A, D> : VNodeDataBuilder<P, A, D>() {
         return vNode
     }
 
-
     fun <P, A, D> h(tag: String, builder: VRenderer<P, A, D>.() -> Unit, props: P): VNode {
         val vNodeData = VRenderer<P, A, D>().apply(builder)
 

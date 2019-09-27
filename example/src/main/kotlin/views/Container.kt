@@ -1,6 +1,5 @@
 package views
 
-
 import components.Content
 import components.Header
 import components.SideMenu

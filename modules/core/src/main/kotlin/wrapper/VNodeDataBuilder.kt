@@ -6,7 +6,6 @@ import cssdsl.CssRule
 import cssdsl.CssRulesBlock
 import external.vue.*
 
-
 open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
 
     var children: ArrayList<VNode> = arrayListOf()
@@ -67,7 +66,6 @@ open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
         }
     }
 
-
     fun scopedSlots(builder: VScopedSlotsBuilder.() -> Unit) {
         VScopedSlotsBuilder().apply(builder)
     }
@@ -84,7 +82,6 @@ open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
             scopedSlots!![this] = normalizedScopedSlot
         }
     }
-
 
     fun on(builder: VOnEvents.() -> Unit) {
         VOnEvents().apply(builder)

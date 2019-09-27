@@ -3,7 +3,6 @@
 
 package external.font_awsome
 
-
 external interface IconDefinition
 
 external val faRobot: IconDefinition

@@ -27,13 +27,11 @@ typealias VBuilder = VNodeDataBuilder<*, *, *>
 
 open class VWebEvents : OnEvents {
 
-
     fun <R> VBuilder.change(callback: EventCallback<R>) = addOnEvent("change", callback)
     fun VBuilder.changeArray(builder: EventCallbacksBuilder<Any>) = addOnEvents("change", builder)
 
     fun <R> VBuilder.input(callback: EventCallback<R>) = addOnEvent("input", callback)
     fun VBuilder.inputArray(builder: EventCallbacksBuilder<Any>) = addOnEvents("input", builder)
-
 
     /**
      * https://developer.mozilla.org/en-US/docs/Web/Events#Media_events
@@ -113,7 +111,6 @@ open class VWebEvents : OnEvents {
     fun VBuilder.audioprocessArray(builder: EventCallbacksBuilder<Any>) =
         addOnEvents("audioprocess", builder)
 
-
     /**
      * https://developer.mozilla.org/en-US/docs/Web/Events#Drag_Drop_events
      */
@@ -141,7 +138,6 @@ open class VWebEvents : OnEvents {
 
     fun <R> VBuilder.drag(callback: EventCallback<R>) = addOnEvent("drag", callback)
     fun VBuilder.dragArray(builder: EventCallbacksBuilder<Any>) = addOnEvents("drag", builder)
-
 
     /**
      * https://developer.mozilla.org/en-US/docs/Web/Events#Mouse_events
@@ -204,7 +200,6 @@ open class VWebEvents : OnEvents {
     fun <R> VBuilder.auxclick(callback: EventCallback<R>) = addOnEvent("auxclick", callback)
     fun VBuilder.auxclickArray(builder: EventCallbacksBuilder<Any>) = addOnEvents("auxclick", builder)
 
-
     /**
      * https://developer.mozilla.org/en-US/docs/Web/Events#Keyboard_events
      */
@@ -218,7 +213,6 @@ open class VWebEvents : OnEvents {
     fun <R> VBuilder.keydown(callback: EventCallback<R>) = addOnEvent("keydown", callback)
     fun VBuilder.keydownArray(builder: EventCallbacksBuilder<Any>) = addOnEvents("keydown", builder)
 
-
     /**
      * https://developer.mozilla.org/en-US/docs/Web/Events#Clipboard_events
      */
@@ -231,7 +225,6 @@ open class VWebEvents : OnEvents {
 
     fun <R> VBuilder.cut(callback: EventCallback<R>) = addOnEvent("cut", callback)
     fun VBuilder.cutArray(builder: EventCallbacksBuilder<Any>) = addOnEvents("cut", builder)
-
 
     /**
      * https://developer.mozilla.org/en-US/docs/Web/Events#View_events
@@ -255,7 +248,6 @@ open class VWebEvents : OnEvents {
     fun VBuilder.fullscreenchangeArray(builder: EventCallbacksBuilder<Any>) =
         addOnEvents("fullscreenchange", builder)
 
-
     /**
      * https://developer.mozilla.org/en-US/docs/Web/Events#Focus_events
      */
@@ -265,7 +257,6 @@ open class VWebEvents : OnEvents {
 
     fun <R> VBuilder.blur(callback: EventCallback<R>) = addOnEvent("blur", callback)
     fun VBuilder.blurArray(builder: EventCallbacksBuilder<Any>) = addOnEvents("blur", builder)
-
 
     /**
      * https://developer.mozilla.org/en-US/docs/Web/Events#Form_events

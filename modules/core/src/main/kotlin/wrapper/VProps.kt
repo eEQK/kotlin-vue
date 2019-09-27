@@ -16,8 +16,8 @@ fun buildPropDefs(builder: PropData.() -> Unit): VPropDefs {
     return propsData
 }
 
-
 class PropData {
+
     val propDefinitions: MutableMap<String, VPropDefs> = mutableMapOf()
 
     operator fun String.invoke(builder: VPropDefs.() -> Unit) =
@@ -25,6 +25,7 @@ class PropData {
 }
 
 class VPropDefs : PropDefs {
+
     override var name: String? = null
     override var type: Any? = null
 

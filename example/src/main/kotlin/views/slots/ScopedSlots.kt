@@ -1,11 +1,9 @@
 package views.slots
 
-
 import wrapper.VComponent
 import wrapper.VComponentBuilder
 import wrapper.div
 import wrapper.vRender
-
 
 interface SlotWithProps {
     var title: String
@@ -18,7 +16,6 @@ class SlotWithPropsClass {
         name = value
     }
 }
-
 
 class ScopedSlots : VComponent<Unit>() {
     init {
@@ -58,7 +55,6 @@ class ScopedSlots : VComponent<Unit>() {
         }
     }
 }
-
 
 class ComponentWithScopedSlot(builder: VComponentBuilder<Unit>) : VComponent<Unit>(builder) {
     init {

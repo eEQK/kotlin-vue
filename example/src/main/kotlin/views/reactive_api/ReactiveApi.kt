@@ -5,9 +5,20 @@ import external.composition_api.Ref
 import external.composition_api.ref
 import external.vue.Location
 import kotlinext.js.jsObject
-import kotlinx.css.*
+import kotlinx.css.Color
+import kotlinx.css.Display
+import kotlinx.css.LinearDimension
+import kotlinx.css.backgroundColor
+import kotlinx.css.display
+import kotlinx.css.margin
+import kotlinx.css.padding
+import kotlinx.css.width
 import useRouter
-import wrapper.*
+import wrapper.VComponent
+import wrapper.div
+import wrapper.keepAlive
+import wrapper.routerView
+import wrapper.vRender
 import kotlin.js.json
 
 private sealed class Tabs {

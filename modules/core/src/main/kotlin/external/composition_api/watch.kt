@@ -2,7 +2,6 @@
 
 package external.composition_api
 
-
 external interface WatchOptions {
     var lazy: Boolean? get() = definedExternally; set(value) = definedExternally
     var flush: String

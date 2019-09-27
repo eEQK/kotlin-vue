@@ -13,6 +13,7 @@ interface HelloWorldProps {
 
 class HelloWorld(builder: VFunctionalComponentBuilder<HelloWorldProps>? = null) :
     VFunctionalComponent<HelloWorldProps>(builder) {
+
     init {
         propData {
             "message"{

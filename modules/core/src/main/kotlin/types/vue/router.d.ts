@@ -14,11 +14,12 @@ export type NavigationGuard<V extends Vue = Vue> = (
 ) => any
 
 export declare class VueRouter {
-    constructor(options?: RouterOptions)
-
+    static install: PluginFunction<never>
     app: Vue;
     mode: RouterMode;
     currentRoute: Route;
+
+    constructor(options?: RouterOptions)
 
     beforeEach(guard: NavigationGuard): Function
 
@@ -68,8 +69,6 @@ export declare class VueRouter {
         normalizedTo: Location
         resolved: Route
     }
-
-    static install: PluginFunction<never>
 }
 
 type Position = { x: number; y: number }

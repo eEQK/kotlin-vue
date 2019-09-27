@@ -2,7 +2,17 @@
 
 package wrapper
 
-import external.vue.*
+import external.vue.Location
+import external.vue.NavigationGuard
+import external.vue.PathToRegexpOptions
+import external.vue.Position
+import external.vue.PositionResult
+import external.vue.Route
+import external.vue.RouteConfig
+import external.vue.RoutePropsFunction
+import external.vue.RouterOptions
+import external.vue.VNode
+import external.vue.VueRouter
 import kotlinext.js.Object
 import kotlinext.js.jsObject
 import kotlin.js.Promise
@@ -18,7 +28,6 @@ class VRouterOptions : RouterOptions {
         childList.add(config)
         routes = childList.toTypedArray()
     }
-
 
     fun parseQuery(callback: (query: String) -> Any) {
         parseQuery = callback
@@ -44,7 +53,6 @@ class VRouterOptions : RouterOptions {
         scrollBehavior = callback
     }
 }
-
 
 class VRouteConfig : RouteConfig {
 
@@ -83,6 +91,7 @@ class RouteLocation : Location
  * https://router.vuejs.org/api/#router-view-props
  */
 class RouterViewProps {
+
     var name: String? = undefined
 }
 
@@ -90,6 +99,7 @@ class RouterViewProps {
  * https://router.vuejs.org/api/#router-link-props
  */
 class RouterLinkProps {
+
     var to: Any? = undefined
 
     fun to(value: String) {
@@ -128,7 +138,6 @@ fun VRender.routerView(render: (VRenderer<RouterViewProps, Any, Any>.() -> Unit)
         h("router-view", render, RouterViewProps())
     } ?: h("router-view")
 }
-
 
 fun VRender.routerLink(builder: VRenderer<RouterLinkProps, Any, Any>.() -> Unit): VNode =
     h("router-link", builder, RouterLinkProps())

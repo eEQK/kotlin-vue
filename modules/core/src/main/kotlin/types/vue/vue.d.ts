@@ -38,15 +38,15 @@ export interface Vue {
     readonly $listeners: Record<string, Function | Function[]>;
     $router: VueRouter
     $route: Route
+    $set: typeof Vue.set;
+    $delete: typeof Vue.delete;
+    $createElement: CreateElement;
 
     $mount(elementOrSelector?: Element | string, hydrating?: boolean): this;
 
     $forceUpdate(): void;
 
     $destroy(): void;
-
-    $set: typeof Vue.set;
-    $delete: typeof Vue.delete;
 
     $watch(
         expOrFn: string,
@@ -71,8 +71,6 @@ export interface Vue {
     $nextTick(callback: (this: this) => void): void;
 
     $nextTick(): Promise<void>;
-
-    $createElement: CreateElement;
 }
 
 export type CombinedVueInstance<Instance extends Vue, Data, Methods, Computed, Props> =
@@ -89,17 +87,19 @@ export interface VueConfiguration {
     devtools: boolean;
     productionTip: boolean;
     performance: boolean;
+    ignoredElements: (string | RegExp)[];
+    keyCodes: { [key: string]: number | number[] };
+    async: boolean;
 
     errorHandler(err: Error, vm: Vue, info: string): void;
 
     warnHandler(msg: string, vm: Vue, trace: string): void;
-
-    ignoredElements: (string | RegExp)[];
-    keyCodes: { [key: string]: number | number[] };
-    async: boolean;
 }
 
 export interface VueConstructor<V extends Vue = Vue> {
+    config: VueConfiguration;
+    version: string;
+
     new<Data = object, Methods = object, Computed = object, PropNames extends string = never>(options?: ThisTypedComponentOptionsWithArrayProps<V, Data, Methods, Computed, PropNames>): CombinedVueInstance<V, Data, Methods, Computed, Record<PropNames, any>>;
 
     // ideally, the return type should just contain Props, not Record<keyof Props, any>. But TS requires to have Base constructors with the same return type.
@@ -164,9 +164,6 @@ export interface VueConstructor<V extends Vue = Vue> {
     };
 
     observable<T>(obj: T): T;
-
-    config: VueConfiguration;
-    version: string;
 }
 
 export const Vue: VueConstructor;
