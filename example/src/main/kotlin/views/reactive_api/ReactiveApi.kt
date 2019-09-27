@@ -5,9 +5,7 @@ import external.composition_api.Ref
 import external.composition_api.ref
 import external.vue.Location
 import kotlinext.js.jsObject
-import kotlinx.css.Color
-import kotlinx.css.Display
-import kotlinx.css.LinearDimension
+import kotlinx.css.*
 import useRouter
 import wrapper.*
 import kotlin.js.json

@@ -9,7 +9,6 @@ import external.vue.VNode
 import external.vue.invoke
 import kotlinext.js.jsObject
 
-
 fun vRender(render: VRender.() -> Unit): () -> VNode = {
     VRenderer<Unit, Unit, Unit>().apply(render).getChildren()[0]
 }

@@ -2,9 +2,6 @@ package cssdsl
 
 import cssdsl.internal.CssDsl
 import kotlinx.css.TagSelector
-import org.w3c.dom.Element
-import org.w3c.dom.css.CSSStyleSheet
-import kotlin.browser.document
 
 typealias CssRuleSet = CssBuilder.() -> Unit
 
@@ -30,29 +27,4 @@ class CssBuilder {
 
     override fun toString() =
         rules.joinToString(" ") { "$it" }
-}
-
-fun buildCss(css: CssBuilder, selector: String?) {
-
-    if (selector == null) {
-        return
-    }
-
-    document.getElementById(selector)?.let { return }
-
-    val style: Element = document.createElement("style")
-
-    style.id = selector
-
-    style.setAttribute("type", "text/css")
-
-    document.head?.appendChild(style)
-
-    val sheet = style.asDynamic().sheet.unsafeCast<CSSStyleSheet>()
-
-    console.log(selector, css.toString())
-
-    css.rules.withIndex().map {
-        sheet.insertRule(it.value.toString(), it.index)
-    }
 }

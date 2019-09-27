@@ -1,8 +1,8 @@
 package wrapper
 
 import cssdsl.CssBuilder
+import cssdsl.CssManager
 import cssdsl.CssRuleSet
-import cssdsl.buildCss
 import external.composition_api.SetupContext
 import external.composition_api.SetupFunction
 import kotlinext.js.jsObject
@@ -28,7 +28,7 @@ abstract class VComponent<P : Any>(
 
     fun css(builder: CssRuleSet) {
         val css = CssBuilder().apply(builder)
-        buildCss(css, this::class.simpleName)
+        CssManager.append(css, this::class.simpleName)
     }
 
     fun propData(builder: PropData.() -> Unit) {

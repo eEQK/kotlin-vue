@@ -5,12 +5,8 @@ import external.composition_api.computed
 import external.composition_api.onMounted
 import external.composition_api.ref
 import external.font_awsome.FaIcon
-import kotlinx.css.Color
-import kotlinx.css.LinearDimension
-import kotlinx.css.Overflow
-import kotlinx.css.properties.Timing
-import kotlinx.css.properties.deg
-import kotlinx.css.properties.s
+import kotlinx.css.*
+import kotlinx.css.properties.*
 import org.w3c.dom.Element
 import wrapper.VComponent
 import wrapper.VComponentBuilder
