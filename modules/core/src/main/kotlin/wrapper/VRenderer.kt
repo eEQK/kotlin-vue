@@ -31,52 +31,6 @@ open class VRenderer<P, A, D> : VNodeDataBuilder<P, A, D>() {
         return vNode
     }
 
-    fun <T : Any> VComponentFuncBuilder<T>.h(builder: (VRenderer<T, Unit, Unit>.() -> Unit)? = null): VNode {
-        val vNodeData = VRenderer<T, Unit, Unit>()
-
-        builder?.let { vNodeData.apply(it) }
-
-        vNodeData.propsBuilder?.let {
-            vNodeData.props = props?.apply(it) ?: jsObject(it)
-            vNodeData.propsBuilder = undefined
-        }
-
-        val vNode = createElement(component(), vNodeData, vNodeData.getChildren())
-        this@VRenderer.child(vNode)
-        return vNode
-    }
-
-    operator fun <T : Any> VFunctionalComponent<T>.unaryPlus(): VNode {
-
-        val component = component()
-
-        this.propDefs = undefined
-        this.modelBuilder = undefined
-        this.propsBuilder = undefined
-        this.injectOption = undefined
-        this.domPropsBuilder = undefined
-        this.renderFunction = undefined
-
-        val vNode = createElement(component, this, getChildren())
-        this@VRenderer.child(vNode)
-        return vNode
-    }
-
-    fun <T : Any> VFunctionalComponentFuncBuilder<T>.h(builder: (VRenderer<T, Unit, Unit>.() -> Unit)? = null): VNode {
-        val vNodeData = VRenderer<T, Unit, Unit>()
-
-        builder?.let { vNodeData.apply(it) }
-
-        vNodeData.propsBuilder?.let {
-            vNodeData.props = props?.apply(it) ?: jsObject(it)
-            vNodeData.propsBuilder = undefined
-        }
-
-        val vNode = createElement(component(), vNodeData, vNodeData.getChildren())
-        this@VRenderer.child(vNode)
-        return vNode
-    }
-
     fun <P, A, D> h(tag: String, builder: VRenderer<P, A, D>.() -> Unit, props: P): VNode {
         val vNodeData = VRenderer<P, A, D>().apply(builder)
 
