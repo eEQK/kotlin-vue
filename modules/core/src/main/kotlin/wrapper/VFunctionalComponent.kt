@@ -1,5 +1,8 @@
 package wrapper
 
+import cssdsl.CssBuilder
+import cssdsl.CssRuleSet
+import cssdsl.buildCss
 import external.composition_api.Symbol
 import external.vue.*
 import kotlinext.js.jsObject
@@ -45,8 +48,8 @@ abstract class VFunctionalComponent<P : Any>(
         injectOption = jsObject(builder)
     }
 
-    fun css(builder: VCssRuleSet) {
-        val css = VCssBuilder().apply(builder)
+    fun css(builder: CssRuleSet) {
+        val css = CssBuilder().apply(builder)
         buildCss(css, this::class.simpleName)
     }
 

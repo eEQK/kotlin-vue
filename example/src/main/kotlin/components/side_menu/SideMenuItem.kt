@@ -1,5 +1,7 @@
 package components.side_menu
 
+import cssdsl.CssRuleSet
+import cssdsl.hover
 import external.font_awsome.FaIcon
 import kotlinext.js.Object
 import kotlinx.css.*
@@ -77,7 +79,7 @@ class SideMenuItem(builder: VComponentBuilder<SideMenuItemProps>) :
     }
 }
 
-private val stylesSideMenuItem: VCssRuleSet = {
+private val stylesSideMenuItem: CssRuleSet = {
     ".menu-item"{
         width = LinearDimension("100%")
         alignItems = Align.center

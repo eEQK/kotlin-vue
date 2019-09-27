@@ -2,6 +2,8 @@
 
 package wrapper
 
+import cssdsl.CssRule
+import cssdsl.CssRulesBlock
 import external.vue.*
 
 
@@ -39,8 +41,8 @@ open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
         domPropsBuilder = builder
     }
 
-    fun style(builder: VCssRulesBlock) {
-        val vCssRule = VCssRule.of(builder)
+    fun style(builder: CssRulesBlock) {
+        val vCssRule = CssRule.of(builder)
         style = vCssRule.toString()
     }
 

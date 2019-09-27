@@ -1,15 +1,15 @@
-package wrapper
+package cssdsl
 
+import cssdsl.internal.CssDsl
 import kotlinx.css.StyledElement
 import kotlinx.css.hyphenize
-import wrapper.internal.VCssDsl
 
-typealias VCssRulesBlock = VCssRule.() -> Unit
+typealias CssRulesBlock = CssRule.() -> Unit
 
-@VCssDsl
-class VCssRule : StyledElement() {
+@CssDsl
+class CssRule : StyledElement() {
 
-    private lateinit var block: VCssRulesBlock
+    private lateinit var block: CssRulesBlock
     private var selector: String? = null
 
     override fun toString() = buildDeclarations(block)
@@ -18,19 +18,19 @@ class VCssRule : StyledElement() {
             else "$selector { $it }".prependIndent()
         }
 
-    operator fun invoke(block: VCssRulesBlock) =
-        VCssRule().apply(block)
+    operator fun invoke(block: CssRulesBlock) =
+        CssRule().apply(block)
 
-    fun buildDeclarations(block: VCssRulesBlock) =
+    fun buildDeclarations(block: CssRulesBlock) =
         invoke(block).declarations
             .map { "${it.key.hyphenize()}: ${it.value};" }
             .joinToString("")
 
     companion object {
         fun of(
-            block: VCssRule.() -> Unit,
+            block: CssRule.() -> Unit,
             selector: String? = null
-        ) = VCssRule()
+        ) = CssRule()
             .apply {
                 this.block = block
                 this.selector = selector

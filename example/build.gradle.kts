@@ -28,6 +28,7 @@ kotlin {
             main {
                 dependencies {
                     implementation(project(":modules:core"))
+                    implementation(project(":modules:css"))
 
                     implementation(npm("vue", "latest"))
                     implementation(npm("core-js", "latest"))

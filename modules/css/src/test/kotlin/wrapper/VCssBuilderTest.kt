@@ -1,17 +1,18 @@
-package wrapper
+package cssdsl
 
 import kotlinx.css.Color
+import kotlinx.css.color
 import utils.assertEqualsIgnoreCaseAndWhitespace
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-internal typealias VCssRuleSet = VCssBuilder.() -> Unit
+internal typealias VCssRuleSet = CssBuilder.() -> Unit
 
 class VCssBuilderTest {
 
     @Test
     fun shouldReturnCorrectCssBlock() {
-        val builder = VCssBuilder()
+        val builder = CssBuilder()
         val css = builder {
             ".test" {
                 color = Color.blueViolet
@@ -27,7 +28,7 @@ class VCssBuilderTest {
 
     @Test
     fun shouldReturnCorrectCssWithAddedExternalCssBuilder() {
-        val builder = VCssBuilder()
+        val builder = CssBuilder()
         val externalCssBuilder: VCssRuleSet = {
             ".test"{
                 color = Color.saddleBrown

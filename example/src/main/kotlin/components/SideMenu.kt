@@ -2,8 +2,14 @@ package components
 
 import components.side_menu.SideMenuGroup
 import components.side_menu.SideMenuItem
-import kotlinx.css.*
-import wrapper.*
+import cssdsl.CssRuleSet
+import kotlinx.css.Align
+import kotlinx.css.Display
+import kotlinx.css.FlexDirection
+import wrapper.VComponent
+import wrapper.VComponentBuilder
+import wrapper.div
+import wrapper.vRender
 
 class SideMenu(builder: VComponentBuilder<Unit>? = null) : VComponent<Unit>(builder) {
     init {
@@ -73,7 +79,7 @@ class SideMenu(builder: VComponentBuilder<Unit>? = null) : VComponent<Unit>(buil
 }
 
 
-private val stylesSideMenu: VCssRuleSet = {
+private val stylesSideMenu: CssRuleSet = {
     ".side-menu" {
         display = Display.flex
         flexDirection = FlexDirection.column

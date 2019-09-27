@@ -4,5 +4,6 @@ include("example")
 
 include(
     ":modules:buildSrc",
+    ":modules:css",
     ":modules:core"
 )

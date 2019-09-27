@@ -1,5 +1,8 @@
 package wrapper
 
+import cssdsl.CssBuilder
+import cssdsl.CssRuleSet
+import cssdsl.buildCss
 import external.composition_api.SetupContext
 import external.composition_api.SetupFunction
 import kotlinext.js.jsObject
@@ -23,8 +26,8 @@ abstract class VComponent<P : Any>(
         }
     }
 
-    fun css(builder: VCssRuleSet) {
-        val css = VCssBuilder().apply(builder)
+    fun css(builder: CssRuleSet) {
+        val css = CssBuilder().apply(builder)
         buildCss(css, this::class.simpleName)
     }
 
@@ -38,7 +41,7 @@ abstract class VComponent<P : Any>(
 
     fun component(): VComponentOptions {
         return jsObject {
-            name = this@VComponent::class.simpleName
+            name = VComponent::class.simpleName
             props = propDefs
             setup = setupFunction
         }
