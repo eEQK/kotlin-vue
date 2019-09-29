@@ -187,7 +187,7 @@ fun <A : HTMLTag, D : HTMLElement> VBuilder.tag(
     }
     vNodeData.domPropsBuilder?.let { vNodeData.domProps = jsObject(it) }
 
-    val vNode = createElement(tag, vNodeData, vNodeData.getChildren())
+    val vNode = createElement(tag, vNodeData, vNodeData.children.toTypedArray())
     child(vNode)
     return vNode
 }

@@ -14,7 +14,7 @@ import kotlinx.css.backgroundColor
 import kotlinx.css.color
 import kotlinx.css.cursor
 import kotlinx.css.flex
-import kotlinx.css.margin
+import kotlinx.css.padding
 import kotlinx.css.properties.TextDecoration
 import kotlinx.css.textDecoration
 import kotlinx.css.width
@@ -71,18 +71,18 @@ class SideMenuItem(builder: VComponentBuilder<SideMenuItemProps>) :
 
             vRender {
                 div {
-                    `class` = "menu-item"
-                    div {
-                        `class` = "icon fa-fw"
+                    `class` = "side-menu-item"
+                    routerLink {
+                        div {
+                            `class` = "icon fa-fw"
 
-                        h(FaIcon) {
-                            props {
-                                p.icon?.let { icon = it }
+                            h(FaIcon) {
+                                props {
+                                    p.icon?.let { icon = it }
+                                }
                             }
                         }
-                    }
 
-                    routerLink {
                         props {
                             to {
                                 name = p.to
@@ -97,7 +97,7 @@ class SideMenuItem(builder: VComponentBuilder<SideMenuItemProps>) :
 }
 
 private val stylesSideMenuItem: CssRuleSet = {
-    ".menu-item"{
+    ".side-menu-item"{
         width = LinearDimension("100%")
         alignItems = Align.center
         flex(0.0, 1.0)
@@ -106,7 +106,7 @@ private val stylesSideMenuItem: CssRuleSet = {
 
     ".icon" {
         color = Color("#1D457C")
-        margin = "0.35rem"
+        padding = "0.35rem"
     }
 
     a {
@@ -114,7 +114,7 @@ private val stylesSideMenuItem: CssRuleSet = {
         textDecoration = TextDecoration.none
     }
 
-    hover(".menu-item") {
+    hover(".side-menu-item") {
         backgroundColor = Color("#D7D7D7")
         cursor = Cursor.pointer
     }

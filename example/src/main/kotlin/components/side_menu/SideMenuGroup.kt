@@ -75,7 +75,7 @@ class SideMenuGroup(builder: VComponentBuilder<SideMenuGroupProps>) :
                     `class` = "side-menu-group"
 
                     div {
-                        `class` = "menu-item"
+                        `class` = "side-menu-item"
                         on { click { opened.value = !opened.value } }
 
                         div {
@@ -121,6 +121,10 @@ private val stylesSideMenuGroup: CssRuleSet = {
         transition("max-height", 0.3.s, Timing.easeInOut)
     }
 
+    ".side-menu-group" {
+        width = LinearDimension("100%")
+    }
+
     ".chevron"{
         color = Color.darkSalmon
 
@@ -133,7 +137,7 @@ private val stylesSideMenuGroup: CssRuleSet = {
         }
     }
 
-    ".side-menu-group-items .menu-item"{
+    ".side-menu-group-items .side-menu-item"{
         paddingLeft = LinearDimension("1rem")
     }
 }

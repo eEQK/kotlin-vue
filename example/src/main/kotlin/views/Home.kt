@@ -1,18 +1,14 @@
 package views
 
-import wrapper.VComponent
 import wrapper.div
+import wrapper.vComponent
 import wrapper.vRender
 
-class Home : VComponent<Unit>() {
-    init {
-        setup { _, _ ->
-
-            vRender {
-                +"AAAAA"
-                div {
-                    +"Welcome to Kotlin/Vue"
-                }
+fun Home() = vComponent {
+    setup { _, _ ->
+        vRender {
+            div {
+                +"Welcome to Kotlin/Vue"
             }
         }
     }

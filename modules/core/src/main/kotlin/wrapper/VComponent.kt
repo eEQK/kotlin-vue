@@ -8,12 +8,6 @@ import kotlinext.js.jsObject
 
 typealias VComponentBuilder<P> = VComponent<P>.() -> Unit
 
-fun <P : Any> vComponent(builder: VComponentBuilder<P> = {}): VComponent<P> =
-    VComponent(null, builder)
-
-fun vComponent(builder: VComponentBuilder<Unit> = {}): VComponent<Unit> =
-    VComponent(null, builder)
-
 open class VComponent<P : Any>(
     renderProps: P? = null,
     builder: VComponentBuilder<P> = {}
@@ -23,7 +17,7 @@ open class VComponent<P : Any>(
     var setupFunction: SetupFunction<P>? = null
 
     init {
-        builder?.let { apply(it) }
+        apply(builder)
 
         propsBuilder?.let {
             props = renderProps?.apply(it) ?: jsObject(it)
@@ -49,14 +43,16 @@ open class VComponent<P : Any>(
     }
 
     // TODO: refactor slot
-    fun slot(VRender: VRender.() -> Unit) {
-        child(VRenderer<Unit, Unit, Unit>().apply(VRender).children.first())
+    fun slot(block: VRender.() -> Unit) {
+        child(VRenderer.of(block).children.first())
     }
 
     fun <T> getRef(name: String, ctx: SetupContext): T? =
         ctx.refs?.get(name).unsafeCast<T?>()
 }
 
-class VComponentFuncBuilder<P : Any>(renderProps: P? = null) : VComponent<P>(renderProps = renderProps) {
-    var name: String? = null
-}
+fun <P : Any> vComponent(builder: VComponentBuilder<P> = {}): VComponent<P> =
+    VComponent(null, builder)
+
+fun vComponent(builder: VComponentBuilder<Unit> = {}): VComponent<Unit> =
+    VComponent(null, builder)

@@ -10,7 +10,7 @@ import external.vue.invoke
 import kotlinext.js.jsObject
 
 fun vRender(render: VRender.() -> Unit): () -> VNode = {
-    VRenderer<Unit, Unit, Unit>().apply(render).children[0]
+    VRenderer.of(render).children[0]
 }
 
 typealias VRender = VRenderer<*, *, *>
@@ -26,7 +26,7 @@ open class VRenderer<P, A, D> : VNodeDataBuilder<P, A, D>() {
         this.propsBuilder = undefined
         this.domPropsBuilder = undefined
 
-        val vNode = createElement(component, this, getChildren())
+        val vNode = createElement(component, this, children.toTypedArray())
         this@VRenderer.child(vNode)
         return vNode
     }
@@ -39,7 +39,7 @@ open class VRenderer<P, A, D> : VNodeDataBuilder<P, A, D>() {
             vNodeData.propsBuilder = undefined
         }
 
-        val vNode = createElement(tag, vNodeData, vNodeData.getChildren())
+        val vNode = createElement(tag, vNodeData, vNodeData.children.toTypedArray())
         child(vNode)
         return vNode
     }
@@ -73,4 +73,8 @@ open class VRenderer<P, A, D> : VNodeDataBuilder<P, A, D>() {
     fun <Props : Any> setSlot(props: Props, name: String, ctx: SetupContext, builder: Props.() -> Unit) =
         ctx.slots?.get(name).unsafeCast<ScopedSlot<Props>?>()?.invoke(props.apply(builder))?.let { child(it) }
 
+    companion object {
+        fun of(block: VRender.() -> Unit) =
+            VRenderer<Unit, Unit, Unit>().apply(block)
+    }
 }

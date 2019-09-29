@@ -30,13 +30,6 @@ class SideMenu() : VComponent<Unit>() {
                     }
                     +SideMenuItem {
                         props {
-                            to = "functionalComponents"
-                            title = "Functional Components"
-                            icon = "robot"
-                        }
-                    }
-                    +SideMenuItem {
-                        props {
                             to = "directives"
                             title = "Directives"
                             icon = "terminal"

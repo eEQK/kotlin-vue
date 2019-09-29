@@ -18,10 +18,6 @@ open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
         children.add(this.unsafeCast<VNode>())
     }
 
-    fun getChildren(): Array<VNode> {
-        return children.toTypedArray()
-    }
-
     var propsBuilder: (P.() -> Unit)? = null
 
     fun props(builder: P.() -> Unit) {
