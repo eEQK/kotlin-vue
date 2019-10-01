@@ -5,6 +5,7 @@ import cssdsl.CssRuleSet
 import external.composition_api.SetupContext
 import external.composition_api.SetupFunction
 import kotlinext.js.jsObject
+import kotlin.js.Json
 
 typealias VComponentBuilder<P> = VComponent<P>.() -> Unit
 
@@ -49,6 +50,10 @@ open class VComponent<P : Any>(
 
     fun <T> getRef(name: String, ctx: SetupContext): T? =
         ctx.refs?.get(name).unsafeCast<T?>()
+
+    operator fun Json.get(name: String) {
+
+    }
 }
 
 fun <P : Any> vComponent(builder: VComponentBuilder<P> = {}): VComponent<P> =

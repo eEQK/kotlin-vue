@@ -2,18 +2,8 @@
 
 package wrapper
 
-import external.vue.Location
-import external.vue.NavigationGuard
-import external.vue.PathToRegexpOptions
-import external.vue.Position
-import external.vue.PositionResult
-import external.vue.Route
-import external.vue.RouteConfig
-import external.vue.RoutePropsFunction
-import external.vue.RouterOptions
-import external.vue.VNode
-import external.vue.VueRouter
-import kotlinext.js.Object
+import external.vue.*
+import kotlinext.js.JsObject
 import kotlinext.js.jsObject
 import kotlin.js.Promise
 
@@ -41,15 +31,7 @@ class VRouterOptions : RouterOptions {
         scrollBehavior = callback
     }
 
-    fun scrollBehavior(callback: (to: Route, from: Route, savedPosition: Nothing?) -> Promise<PositionResult>) {
-        scrollBehavior = callback
-    }
-
     fun scrollBehavior(callback: (to: Route, from: Route, savedPosition: Position?) -> PositionResult) {
-        scrollBehavior = callback
-    }
-
-    fun scrollBehavior(callback: (to: Route, from: Route, savedPosition: Nothing?) -> PositionResult) {
         scrollBehavior = callback
     }
 }
@@ -57,6 +39,9 @@ class VRouterOptions : RouterOptions {
 class VRouteConfig : RouteConfig {
 
     private val childList = arrayListOf<VRouteConfig>()
+    override var component: dynamic = null
+        get() = field.component()
+        set(value) {}
 
     fun childRoute(builder: VRouteConfig.() -> Unit) {
         val config = VRouteConfig().apply(builder)
@@ -76,7 +61,7 @@ class VRouteConfig : RouteConfig {
         props = value
     }
 
-    fun props(value: Object) {
+    fun props(value: JsObject) {
         props = value
     }
 
@@ -101,6 +86,12 @@ class RouterViewProps {
 class RouterLinkProps {
 
     var to: Any? = undefined
+    var replace: Boolean? = undefined
+    var append: Boolean? = undefined
+    var tag: String? = undefined
+    var activeClass: String? = undefined
+    var exact: Boolean? = undefined
+    var event: Any? = undefined
 
     fun to(value: String) {
         to = value
@@ -109,18 +100,6 @@ class RouterLinkProps {
     fun to(builder: RouteLocation.() -> Unit) {
         to = RouteLocation().apply(builder)
     }
-
-    var replace: Boolean? = undefined
-
-    var append: Boolean? = undefined
-
-    var tag: String? = undefined
-
-    var activeClass: String? = undefined
-
-    var exact: Boolean? = undefined
-
-    var event: Any? = undefined
 
     fun event(value: String) {
         event = value

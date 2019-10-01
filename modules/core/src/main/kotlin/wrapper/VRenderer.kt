@@ -18,7 +18,6 @@ typealias VRender = VRenderer<*, *, *>
 open class VRenderer<P, A, D> : VNodeDataBuilder<P, A, D>() {
 
     operator fun <T : Any> VComponent<T>.unaryPlus(): VNode {
-
         val component = component()
 
         this.propDefs = undefined

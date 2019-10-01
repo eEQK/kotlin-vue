@@ -42,9 +42,7 @@ The hope is to have all Vue3 features available.  A [Vuex](https://vuex.vuejs.or
 what the future API looks like I'm not focused on it at this point.
 
 There are no current plans to implement a vue2 component api since working with a proxied `this` was outside of my current 
-kotlin skill set.  There is a commented out kotlin version of [vue-class-component](https://github.com/vuejs/vue-class-component) 
-that did 'work' for kotlin `object` vue2 components, and is retained in the code for now if you are interested in playing
- with it. 
+kotlin skill set.
 
 The current state of this project is POC so the API can and will change without notice.  There is no polish to anything 
 nor attempt to do so at this point.  The example app will hopefully have working examples of most if not all the features 
