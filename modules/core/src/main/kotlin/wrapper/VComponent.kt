@@ -13,6 +13,7 @@ open class VComponent<P : Any>(
     builder: VComponentBuilder<P> = {}
 ) : VNodeDataBuilder<P, Unit, Unit>() {
 
+    val name = VComponent::class.simpleName
     var propDefs: VPropDefs? = null
     var setupFunction: SetupFunction<P>? = null
 
@@ -34,12 +35,6 @@ open class VComponent<P : Any>(
 
     fun setup(value: SetupFunction<P>) {
         setupFunction = value
-    }
-
-    fun component(): VComponentOptions = jsObject {
-        name = VComponent::class.simpleName
-        props = propDefs
-        setup = setupFunction
     }
 
     // TODO: refactor slot

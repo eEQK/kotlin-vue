@@ -19,14 +19,12 @@ open class VRenderer<P, A, D> : VNodeDataBuilder<P, A, D>() {
 
     operator fun <T : Any> VComponent<T>.unaryPlus(): VNode {
 
-        val component = component()
-
         this.propDefs = undefined
         this.setupFunction = undefined
         this.propsBuilder = undefined
         this.domPropsBuilder = undefined
 
-        val vNode = createElement(component, this, children.toTypedArray())
+        val vNode = createElement(this.name, this, children.toTypedArray())
         this@VRenderer.child(vNode)
         return vNode
     }

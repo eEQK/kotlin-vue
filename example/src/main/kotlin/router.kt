@@ -18,43 +18,43 @@ val vRouter = vRouter {
     vRoute {
         path = "/"
         name = "home"
-        component = Home().component()
+        component = Home()
     }
 
     vRoute {
         path = "/directives"
         name = "directives"
-        component = Directives().component()
+        component = Directives()
     }
 
     vRoute {
         path = "/reactive_api"
         name = "reactiveApi"
-        component = ReactiveApi().component()
+        component = ReactiveApi()
 
         childRoute {
             path = "reactive"
             name = "reactive"
-            component = Reactive().component()
+            component = Reactive()
         }
 
         childRoute {
             path = "refs"
             name = "ref"
-            component = RefsExample().component()
+            component = RefsExample()
         }
     }
 
     vRoute {
         path = "/slots"
         name = "slots"
-        component = Slots().component()
+        component = Slots()
     }
 
     vRoute {
         path = "/scoped_slots"
         name = "scopedSlots"
-        component = ScopedSlots().component()
+        component = ScopedSlots()
     }
 }
 
