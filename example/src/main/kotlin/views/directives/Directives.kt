@@ -1,14 +1,9 @@
-package views
+package views.directives
 
 import external.composition_api.Ref
 import external.composition_api.ref
-import kotlinx.css.Color
-import kotlinx.css.LinearDimension
-import kotlinx.css.backgroundColor
-import kotlinx.css.borderColor
-import kotlinx.css.height
-import kotlinx.css.marginTop
-import kotlinx.css.width
+import external.vue.Vue
+import kotlinx.css.*
 import wrapper.VComponent
 import wrapper.VRender
 import wrapper.div
@@ -16,7 +11,7 @@ import wrapper.vRender
 
 class Directives : VComponent<Unit>() {
     init {
-        css { }
+        Vue.directive("onExternalClick", onExternalClick())
 
         setup { _, _ ->
 
@@ -48,7 +43,7 @@ class Directives : VComponent<Unit>() {
                         }
 
                         directives {
-                            "on-external-click"{
+                            "on-external-click" {
                                 expression = externalClick
                             }
                         }

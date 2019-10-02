@@ -3,8 +3,8 @@ import external.composition_api.invoke
 import external.composition_api.provide
 import external.composition_api.symbol
 import external.vue.VueRouter
-import views.Directives
 import views.Home
+import views.directives.Directives
 import views.reactive_api.Reactive
 import views.reactive_api.ReactiveApi
 import views.reactive_api.RefsExample

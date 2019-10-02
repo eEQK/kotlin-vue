@@ -3,12 +3,7 @@ package components
 import components.side_menu.SideMenuGroup
 import components.side_menu.SideMenuItem
 import cssdsl.CssRuleSet
-import kotlinx.css.Align
-import kotlinx.css.Display
-import kotlinx.css.FlexDirection
-import kotlinx.css.alignItems
-import kotlinx.css.display
-import kotlinx.css.flexDirection
+import kotlinx.css.*
 import wrapper.VComponent
 import wrapper.div
 import wrapper.vRender
@@ -30,7 +25,7 @@ class SideMenu() : VComponent<Unit>() {
                     }
                     +SideMenuItem {
                         props {
-                            to = "directives"
+                            to = ""
                             title = "Directives"
                             icon = "terminal"
                         }

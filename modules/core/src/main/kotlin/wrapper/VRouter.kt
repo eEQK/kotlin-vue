@@ -41,7 +41,6 @@ class VRouteConfig : RouteConfig {
     private val childList = arrayListOf<VRouteConfig>()
     override var component: dynamic = null
         get() = field.component()
-        set(value) {}
 
     fun childRoute(builder: VRouteConfig.() -> Unit) {
         val config = VRouteConfig().apply(builder)

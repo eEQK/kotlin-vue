@@ -9,28 +9,25 @@ import external.vue.*
 open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
 
     var children: ArrayList<VNode> = arrayListOf()
-
-    fun child(child: VNode) {
-        children.add(child)
-    }
+    var propsBuilder: (P.() -> Unit)? = null
+    var attributeBuilder: (A.() -> Unit)? = null
+    var domPropsBuilder: (D.() -> Unit)? = null
 
     operator fun String.unaryPlus() {
         children.add(this.unsafeCast<VNode>())
     }
 
-    var propsBuilder: (P.() -> Unit)? = null
+    fun child(child: VNode) {
+        children.add(child)
+    }
 
     fun props(builder: P.() -> Unit) {
         propsBuilder = builder
     }
 
-    var attributeBuilder: (A.() -> Unit)? = null
-
     fun attrs(builder: A.() -> Unit) {
         attributeBuilder = builder
     }
-
-    var domPropsBuilder: (D.() -> Unit)? = null
 
     fun domProps(builder: D.() -> Unit) {
         domPropsBuilder = builder
@@ -41,42 +38,12 @@ open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
         style = vCssRule.toString()
     }
 
-    inline fun directives(builder: VDirectivesBuilder.() -> Unit) {
-        VDirectivesBuilder().apply(builder)
-    }
-
-    inner class VDirectivesBuilder {
-
-        private val vDirectives = arrayListOf<VNodeDirective>()
-
-        operator fun String.invoke(builder: VDirective.() -> Unit) {
-
-            val directive = VDirective().apply(builder)
-
-            directive.name = this
-
-            vDirectives.add(directive)
-
-            directives = vDirectives.toTypedArray()
-
-        }
+    fun directives(builder: VDirectivesBuilder.() -> Unit) {
+        directives = VDirectivesBuilder().apply(builder).vDirectives.toTypedArray()
     }
 
     fun scopedSlots(builder: VScopedSlotsBuilder.() -> Unit) {
         VScopedSlotsBuilder().apply(builder)
-    }
-
-    inner class VScopedSlotsBuilder {
-
-        operator fun <Props> String.invoke(scopedSlot: ScopedSlot<Props>) {
-            scopedSlots ?: run { scopedSlots = VScopedSlots() }
-            scopedSlots!![this] = scopedSlot
-        }
-
-        operator fun String.invoke(normalizedScopedSlot: NormalizedScopedSlot) {
-            scopedSlots ?: run { scopedSlots = VScopedSlots() }
-            scopedSlots!![this] = normalizedScopedSlot
-        }
     }
 
     fun on(builder: VOnEvents.() -> Unit) {
@@ -95,6 +62,18 @@ open class VNodeDataBuilder<P, A, D> : VNodeData<P, A, D> {
     fun <R> addOnEvents(eventName: String, builder: EventCallbacksBuilder<R>) {
         on ?: run { on = VOnEvents() }
         on!![eventName] = arrayListOf<EventCallback<R>>().apply(builder).toTypedArray()
+    }
+
+    inner class VScopedSlotsBuilder {
+        operator fun <Props> String.invoke(scopedSlot: ScopedSlot<Props>) {
+            scopedSlots ?: run { scopedSlots = VScopedSlots() }
+            scopedSlots!![this] = scopedSlot
+        }
+
+        operator fun String.invoke(normalizedScopedSlot: NormalizedScopedSlot) {
+            scopedSlots ?: run { scopedSlots = VScopedSlots() }
+            scopedSlots!![this] = normalizedScopedSlot
+        }
     }
 
     inner class VOnEvents : VWebEvents() {

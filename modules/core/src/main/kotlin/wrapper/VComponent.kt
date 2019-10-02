@@ -5,7 +5,6 @@ import cssdsl.CssRuleSet
 import external.composition_api.SetupContext
 import external.composition_api.SetupFunction
 import kotlinext.js.jsObject
-import kotlin.js.Json
 
 typealias VComponentBuilder<P> = VComponent<P>.() -> Unit
 
@@ -37,12 +36,6 @@ open class VComponent<P : Any>(
         setupFunction = value
     }
 
-    fun component(): VComponentOptions = jsObject {
-        name = VComponent::class.simpleName
-        props = propDefs
-        setup = setupFunction
-    }
-
     // TODO: refactor slot
     fun slot(block: VRender.() -> Unit) {
         child(VRenderer.of(block).children.first())
@@ -51,8 +44,10 @@ open class VComponent<P : Any>(
     fun <T> getRef(name: String, ctx: SetupContext): T? =
         ctx.refs?.get(name).unsafeCast<T?>()
 
-    operator fun Json.get(name: String) {
-
+    fun component(): VComponentOptions = jsObject {
+        name = VComponent::class.simpleName
+        props = propDefs
+        setup = setupFunction
     }
 }
 

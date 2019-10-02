@@ -6,7 +6,16 @@ import external.vue.VNodeDirective
 
 class VDirective : VNodeDirective
 
-class VDirectiveOptions : DirectiveOptions {
+class VDirectivesBuilder : DirectiveOptions {
+
+    val vDirectives = mutableListOf<VDirective>()
+
+    operator fun String.invoke(block: VDirective.() -> Unit): List<VDirective> {
+        val directive = VDirective().apply(block)
+        directive.name = this
+        vDirectives.add(directive)
+        return vDirectives
+    }
 
     fun bind(directiveFunction: DirectiveFunction) {
         bind = directiveFunction
@@ -29,6 +38,7 @@ class VDirectiveOptions : DirectiveOptions {
     }
 }
 
-fun vDirective(builder: VDirectiveOptions.() -> Unit) = VDirectiveOptions().apply(builder)
+fun vDirective(builder: VDirectivesBuilder.() -> Unit) =
+    VDirectivesBuilder().apply(builder)
 
 
